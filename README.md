@@ -14,18 +14,19 @@ Hardware needed for this project:
 
 ---
 
-## Setup | `SETUP.sh`
+## Install 
 
-To install all required dependencies and prepare the Raspberry Pi, run:
+Install on a clean install of rpi os 32bit lite with:
 ```bash
-bash SETUP.sh
+sudo apt install -y git
+cd ~
+git clone https://github.com/MonomCZ/MeowPiFour.git
+cd MeowPiFour
+bash Utillity/SETUP.sh
 ```
 ## Update | `UPDATE.sh`
 
-When a new update is released, you don't need to reinstall the whole project.
-
-Run:
-
+To update (pull from git) use MeowPiFour/Utility/UPDATE.sh
 ```bash
-bash UPDATE.sh
+bash ~/MeowPiFour/Utility/UPDATE.sh
 ```
