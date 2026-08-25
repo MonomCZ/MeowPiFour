@@ -1,15 +1,16 @@
 # MeowPiFour
 
-A small project for testing and using many different gadget modes compatible with the **Raspberry Pi Zero 2 W**.
+Project for managing python projects (with mostly pen testing projects inlcuded) for **Raspberry Pi Zero 2 W**.
 
-The goal of this project is to display hacking gadgets using an I2C OLED display and buttons connected to the **Raspberry Pi Zero 2** via GPIO pins:
-- Evil Twin Wi-Fi attack
-- BadUSB
+The goal of this project is to have an easy way to manage and use your (our) python projects with a nice and compact GPIO oled display controlled with 5 GPIO buttons.
+Current inlcluded projects are:
+- **Evil Twin Wi-Fi attack** (planned)
+- **BadUSB (planned)**
 
 Hardware needed for this project:
-- I2C OLED display
-- GPIO buttons
-- TP-Link Wi-Fi adapter (Recommended)
+- **I2C OLED display**
+- **GPIO buttons**
+- **TP-Link Wi-Fi adapter** (Recommended for nicer use of the evil twin mode)
 
 
 ---
@@ -24,7 +25,7 @@ git clone https://github.com/MonomCZ/MeowPiFour.git
 cd MeowPiFour
 bash Utillity/SETUP.sh
 ```
-## Update | `UPDATE.sh`
+## Update
 
 To update (pull from git) use MeowPiFour/Utility/UPDATE.sh
 ```bash
