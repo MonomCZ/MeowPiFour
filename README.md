@@ -1,8 +1,8 @@
 # MeowPiFour
 
-A small project for testing and using many different gadget modes compatible with the **Raspberry Pi Zero 2 W / WH**.
+A small project for testing and using many different gadget modes compatible with the **Raspberry Pi Zero 2 W**.
 
-The goal of this project is to display hacking gadgets using an I2C OLED display and buttons connected to the **Raspberry Pi Zero 2 W / WH** via GPIO pins:
+The goal of this project is to display hacking gadgets using an I2C OLED display and buttons connected to the **Raspberry Pi Zero 2** via GPIO pins:
 - Evil Twin Wi-Fi attack
 - BadUSB
 
