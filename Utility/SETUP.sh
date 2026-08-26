@@ -2,7 +2,7 @@
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y python3-pip python3-venv python3-pil i2c-tools
+sudo apt install -y python3 python3-pip python3-venv python3-pil i2c-tools
 cd ~/MeowPiFour
 
 #sets up the python path for the project (i think so atleast)

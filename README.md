@@ -23,7 +23,7 @@ sudo apt install -y git
 cd ~
 git clone https://github.com/MonomCZ/MeowPiFour.git
 cd MeowPiFour
-bash Utillity/SETUP.sh
+bash Utility/SETUP.sh
 ```
 ## Update
 
