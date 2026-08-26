@@ -2,6 +2,8 @@
 
 #it will be like this
 
+main_file_name=evil_twin.py #tells the system what mode to import
+
 start = run_eviltwin(ssid,captive_portal_type) #this start tell the system what will happen when you start the mode
 
 options = {ssid: ["Free WiFi", "McDonalds", "Starbucks"],
