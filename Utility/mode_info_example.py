@@ -1,5 +1,5 @@
 #each "mode" has a Name_info.py file which will tell the system how it works whot stuff can be changed etc
-#
+
 #it will be like this
 
 main_file_name=evil_twin.py #tells the system what mode to importls ~/.ssh/
