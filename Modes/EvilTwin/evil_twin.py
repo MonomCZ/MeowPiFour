@@ -23,7 +23,6 @@ IFACE = WLAN
 PORTAL_IP = "192.168.4.1"
 WIFI_SSID = preset["ssid"]
 
-
 #Step 1 stop all services
 def stoping_services():
     print("Stoping all services...")
