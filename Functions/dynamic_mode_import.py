@@ -12,5 +12,6 @@ for mode in modelist:
     import_mode = f'Modes.{mode}.{mode_info}'
     imported_modes[mode_info] = __import__(import_mode, fromlist=[mode_info])
 
-print(imported_modes['BadUsb_info'].start)
-print(imported_modes)
+for mode in modelist:
+    main_file_name = imported_modes[mode + "_info"].main_file_name
+    main_mode_file = f'Modes.{mode}.{main_file_name}'
