@@ -12,4 +12,5 @@ for mode in modelist:
     import_mode = f'Modes.{mode}.{mode_info}'
     imported_modes[mode_info] = __import__(import_mode, fromlist=[mode_info])
 
-print(imported_modes[0].start)
+print(imported_modes['BadUsb'].start)
+print(imported_modes)
