@@ -9,3 +9,4 @@ start = run_eviltwin(ssid,captive_portal_type) #this start tell the system what 
 options = {ssid: ["Free WiFi", "McDonalds", "Starbucks"],
            captive_portal_type: ["Default", "McDonalds", "Starbucks"]} #this tells the system what options can be changed and what the options are
 
+selected_options = {ssid: "Free WiFi", captive_portal_type: "Default"} #this tells the system what the selected options are
