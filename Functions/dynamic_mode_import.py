@@ -14,4 +14,6 @@ for mode in modelist:
 
 for mode in modelist:
     main_file_name = imported_modes[mode + "_info"].main_file_name
-    main_mode_file = f'Modes.{mode}.{main_file_name}'
+    imported_main_mode_files[mode] = __import__(f'Modes.{mode}.{main_file_name}', fromlist=[main_file_name])
+
+
