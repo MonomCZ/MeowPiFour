@@ -5,7 +5,7 @@ Interface for managing python projects (with mostly pen testing projects inlcude
 The goal of this interface is to have an easy way to manage and use your (our) python projects with a nice and compact GPIO oled display controlled with 5 GPIO buttons.
 Current inlcluded projects are:
 - **Evil Twin Wi-Fi attack** (planned)
-- **BadUSB (planned)**
+- **BadUSB** (planned)
 
 Hardware needed for this project:
 - **I2C OLED display**
