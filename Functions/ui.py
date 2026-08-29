@@ -75,9 +75,8 @@ MeowPiBoot = bytes([
 oled_display.clear()
 image = Image.frombytes('1', (oled_display.WIDTH, oled_display.HEIGHT), MeowPiBoot)
 
-disp.image(image)
-disp.display()
+oled.image(image)
+oled.display()
 
 
 
-2
