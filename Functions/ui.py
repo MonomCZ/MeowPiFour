@@ -15,7 +15,7 @@ oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c)
 oled.fill(0)
 oled.show()
 
-boot_images = [oled_display.MeowPiBoot, oled_display.MeowPiBoot2]
+boot_images = [MeowPiBoot,MeowPiBoot2]
 
 MeowPiBoot = bytes([
 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 
