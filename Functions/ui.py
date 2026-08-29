@@ -1,7 +1,7 @@
 #testing for now
 import Functions.oled_display as oled_display
 import time
-import Adafruit_SSD1306
+import adafruit_ssd1306
 import PIL
 
 MeowPiBoot = bytes([
