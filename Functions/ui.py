@@ -3,6 +3,8 @@ import Functions.oled_display as oled_display
 import time
 import adafruit_ssd1306
 from PIL import Image
+import board
+import busio
 
 WIDTH = 128
 HEIGHT = 64
