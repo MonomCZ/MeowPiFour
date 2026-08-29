@@ -1,4 +1,4 @@
-#from https://github.com/MonomCZ/MeowPi-3
+#original from https://github.com/MonomCZ/MeowPi-3
 from PIL import Image, ImageDraw
 import board
 import busio
@@ -9,10 +9,6 @@ import subprocess
 WIDTH = 128
 HEIGHT = 64
 
-i2c = busio.I2C(board.SCL, board.SDA)
-oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c)
-oled.fill(0)
-oled.show()
 
 image = Image.new("1", (WIDTH, HEIGHT))
 draw = ImageDraw.Draw(image)
@@ -40,6 +36,6 @@ def display_temperature():
     output = str.replace(output, "'", "°")
     display_text(output, 20)
 
-def show():
+def show(oled):
     oled.image(image)
     oled.show()
