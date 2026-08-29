@@ -5,6 +5,7 @@ import adafruit_ssd1306
 from PIL import Image
 import board
 import busio
+import random
 
 WIDTH = 128
 HEIGHT = 64
@@ -14,6 +15,7 @@ oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c)
 oled.fill(0)
 oled.show()
 
+boot_images = [oled_display.MeowPiBoot, oled_display.MeowPiBoot2]
 
 MeowPiBoot = bytes([
 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 
@@ -149,7 +151,7 @@ MeowPiBoot2 = bytes([
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 ])
 
-
+random.choice(boot_images)
 oled_display.clear()
 image = Image.frombytes('1', (oled_display.WIDTH, oled_display.HEIGHT), MeowPiBoot2)
 
