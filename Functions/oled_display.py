@@ -9,22 +9,19 @@ import subprocess
 WIDTH = 128
 HEIGHT = 64
 
-
 image = Image.new("1", (WIDTH, HEIGHT))
 draw = ImageDraw.Draw(image)
 
 # the display fits 21 character per line
 
-def display_text(text,y):
+def display_text(text,y,font):
 # ^ means next line
     
     text.split("^")
     for i in range(len(text.split("^"))):
-        draw.text((0, y + (i*10)), text.split("^")[i], fill=255)
+        draw.text((0, y + (i*10)), text.split("^")[i], fill=255, font=font)
 
     str.replace(text, "^", "")
-
-
 
 def clear():
     draw.rectangle((0, 0, WIDTH, HEIGHT), outline=0, fill=0) 
