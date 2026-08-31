@@ -1,5 +1,5 @@
-#maybe useless maybe not, not sure yet
-font = '/usr/share/fonts/truetype/hack/Hack-Bold.ttf'
+from PIL import ImageFont
+font = ImageFont.truetype('/usr/share/fonts/truetype/hack/Hack-Bold.ttf', 12)
 #list of fonts on the rpi atm
 # /usr/share/fonts/truetype/terminus/TerminusTTF-4.46.0.ttf
 # /usr/share/fonts/truetype/hack/Hack-BoldItalic.ttf
