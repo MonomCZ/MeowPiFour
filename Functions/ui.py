@@ -162,7 +162,7 @@ def boot_screen():
 
 def test_text():
     oled_display.clear()
-    oled_display.text("Hello, World!", 0, 'Hack')
+    oled_display.display_text("Hello, World!", 0, 'Hack')
     oled_display.show()
 
 
