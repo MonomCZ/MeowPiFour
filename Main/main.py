@@ -1,6 +1,7 @@
 import Functions.dynamic_mode_import
 import Functions.ui
 import Main.config as config
+import Functions.oled_display as oled_display
 
 font = config.font
 
