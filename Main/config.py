@@ -1,2 +1,46 @@
 #maybe useless maybe not, not sure yet
-font = 
+font = '/usr/share/fonts/truetype/hack/Hack-Bold.ttf'
+#list of fonts on the rpi atm
+# /usr/share/fonts/truetype/terminus/TerminusTTF-4.46.0.ttf
+# /usr/share/fonts/truetype/hack/Hack-BoldItalic.ttf
+# /usr/share/fonts/truetype/hack/Hack-Italic.ttf
+# /usr/share/fonts/truetype/hack/Hack-Bold.ttf
+# /usr/share/fonts/truetype/hack/Hack-Regular.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-Regular.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-Regular.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-Thin.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-ExtraLight.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-Medium.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-ExtraBoldItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-ThinItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-ExtraLightItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-ExtraBold.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-ExtraLight.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-BoldItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-ThinItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-ExtraBold.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-SemiBold.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-MediumItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-Medium.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-Bold.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-Italic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-MediumItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-SemiBoldItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-SemiBold.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-Bold.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-SemiBoldItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-Thin.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-LightItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-Light.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-ExtraBoldItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-ExtraLightItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-Italic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-BoldItalic.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMonoNL-Light.ttf
+# /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-LightItalic.ttf
+# /usr/share/fonts/truetype/firacode/FiraCode-Retina.ttf
+# /usr/share/fonts/truetype/firacode/FiraCode-Bold.ttf
+# /usr/share/fonts/truetype/firacode/FiraCode-Light.ttf
+# /usr/share/fonts/truetype/firacode/FiraCode-SemiBold.ttf
+# /usr/share/fonts/truetype/firacode/FiraCode-Regular.ttf
+# /usr/share/fonts/truetype/firacode/FiraCode-Medium.ttf
