@@ -1,7 +1,53 @@
 from PIL import ImageFont
-font = ImageFont.truetype('/usr/share/fonts/truetype/firacode/FiraCode-Retina.ttf', 12)
+font = ImageFont.truetype('/usr/share/fonts/truetype/msttcorefonts/Comic_Sans_MS_Bold.ttf', 20)
 #list of fonts on the rpi atm
+#/usr/share/fonts/truetype/liberation/LiberationMono-BoldItalic.ttf
+# /usr/share/fonts/truetype/liberation/LiberationSansNarrow-Italic.ttf
+# /usr/share/fonts/truetype/liberation/LiberationSerif-BoldItalic.ttf
+# /usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf
+# /usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf
+# /usr/share/fonts/truetype/liberation/LiberationSansNarrow-BoldItalic.ttf
+# /usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf
+# /usr/share/fonts/truetype/liberation/LiberationMono-Italic.ttf
+# /usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf
+# /usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf
+# /usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf
+# /usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf
+# /usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf
+# /usr/share/fonts/truetype/liberation/LiberationSansNarrow-Bold.ttf
+# /usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf
+# /usr/share/fonts/truetype/liberation/LiberationSansNarrow-Regular.ttf
 # /usr/share/fonts/truetype/terminus/TerminusTTF-4.46.0.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Times_New_Roman_Bold_Italic.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Trebuchet_MS_Bold_Italic.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Georgia_Bold_Italic.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Times_New_Roman_Italic.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Times_New_Roman.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Arial_Black.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Comic_Sans_MS_Bold.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Georgia_Italic.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Webdings.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Arial.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Courier_New_Bold_Italic.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Impact.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Andale_Mono.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Arial_Bold_Italic.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Verdana_Bold_Italic.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Times_New_Roman_Bold.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Georgia.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Georgia_Bold.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Verdana_Italic.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Comic_Sans_MS.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Courier_New_Italic.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Verdana.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Arial_Italic.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Courier_New.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Courier_New_Bold.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Arial_Bold.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Trebuchet_MS_Italic.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Verdana_Bold.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Trebuchet_MS_Bold.ttf
+# /usr/share/fonts/truetype/msttcorefonts/Trebuchet_MS.ttf
 # /usr/share/fonts/truetype/hack/Hack-BoldItalic.ttf
 # /usr/share/fonts/truetype/hack/Hack-Italic.ttf
 # /usr/share/fonts/truetype/hack/Hack-Bold.ttf
