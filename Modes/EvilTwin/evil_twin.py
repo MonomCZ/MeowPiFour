@@ -6,8 +6,8 @@ import sys
 import subprocess
 import threading
 from flask import Flask, render_template
-from Modes.EvilTwin.evil_twin_presets import selected_options, options
-preset = selected_options["presets"]
+from Modes.EvilTwin.EvilTwin_info import selected_options, options
+preset = selected_options["pr]esets"]
 
 
 #For comands like stop procesess  -- "systemctl", "stop", "NetworkManager  
