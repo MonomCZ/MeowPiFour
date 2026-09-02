@@ -6,8 +6,8 @@ import sys
 import subprocess
 import threading
 from flask import Flask, render_template
-from EvilTwin_info import WIFI_PRESETS, ACTIVE_PRESET, WLAN
-preset = WIFI_PRESETS[ACTIVE_PRESET]
+from EvilTwin_info import selected_options
+preset = selected_options
 
 
 #For comands like stop procesess  -- "systemctl", "stop", "NetworkManager  
@@ -19,7 +19,7 @@ def cmd(comand, ignore_error = False): # ignore_error so the script dont fail if
     return result     
 
 #Configruration
-IFACE = WLAN
+IFACE = selected_options['WLAN']
 PORTAL_IP = "192.168.4.1"
 WIFI_SSID = selected_options["SSID"]
 
@@ -107,7 +107,7 @@ app = Flask(__name__, template_folder=os.path.join(base_dir, "templates"))
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def captive_portal(path):
-    return render_template(preset["portal"])
+    return render_template(preset["PORTAL"])
 
 def start_portal():
      print("Starting web server on port 80...")
