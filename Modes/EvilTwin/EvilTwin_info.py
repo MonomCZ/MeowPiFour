@@ -1,4 +1,4 @@
-main_file_name = "evil_twin.py"
+main_file_name = "evil_twin"
 start = 'run_eviltwin()'
 
 options = {
