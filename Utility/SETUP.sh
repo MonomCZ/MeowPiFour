@@ -2,7 +2,7 @@
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y python3 python3-pip python3-venv python3-pil i2c-tools python3-flask hostapd dnsmasq iptables python3-pil python3-flask python3-render_template
+sudo apt install -y python3 python3-pip python3-venv python3-pil i2c-tools python3-flask hostapd dnsmasq iptables python3-pil python3-flask
 #fonts i put it seperate cause i can idc
 sudo apt install -y fonts-firacode fonts-jetbrains-mono fonts-hack fonts-terminus ttf-mscorefonts-installer
 
