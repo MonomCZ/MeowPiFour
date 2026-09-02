@@ -2,7 +2,7 @@
 import Functions.oled_display as oled_display
 import time
 import adafruit_ssd1306
-from PIL import Image
+from PIL import Image, Draw, ImageFont, Image
 import board
 import busio
 import random
