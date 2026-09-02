@@ -7,6 +7,6 @@ options = {
 }
 
 selected_options = {
-    "presets": "FREE WIFI",
+    "SSID": "FREE WIFI",
     'WLAN': "TP_LINK_ADAPTER"
 }

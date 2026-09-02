@@ -19,9 +19,9 @@ def cmd(comand, ignore_error = False): # ignore_error so the script dont fail if
     return result     
 
 #Configruration
-IFACE = WLAN
+IFACE = selected_options["WLAN"]
 PORTAL_IP = "192.168.4.1"
-WIFI_SSID = preset["ssid"]
+WIFI_SSID = selected_options["SSID"]
 
 #Step 1 stop all services
 def stoping_services():
