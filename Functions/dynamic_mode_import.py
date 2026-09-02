@@ -21,3 +21,5 @@ def import_modes():
     return imported_modes_infos, imported_main_mode_files
 #when using the function use 
 #imported_modes_infos, imported_main_mode_files = import_modes()
+
+import_modes_infos, imported_main_mode_files = import_modes()
