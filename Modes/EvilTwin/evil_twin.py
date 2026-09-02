@@ -6,8 +6,8 @@ import sys
 import subprocess
 import threading
 from flask import Flask, render_template
-from EvilTwin_info import WIFI_PRESETS, ACTIVE_PRESET, WLAN
-preset = WIFI_PRESETS[ACTIVE_PRESET]
+from Modes.EvilTwin.evil_twin_presets import selected_options, options
+preset = selected_options["presets"]
 
 
 #For comands like stop procesess  -- "systemctl", "stop", "NetworkManager  
