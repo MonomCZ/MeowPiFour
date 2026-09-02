@@ -16,7 +16,7 @@ def import_modes():
     print(f'!!!!!!!!!!!!!!!!!!!Imported main file name for evil_twin: {imported_modes_infos["evil_twin_info"].main_file_name}')
     for mode in modelist:
         main_file_name = imported_modes_infos[mode + "_info"].main_file_name
-        imported_main_mode_files[mode] = __import__(f'Modes.{mode}.{main_file_name}', fromlist=[main_file_name])
+        imported_main_mode_files[mode] = __import__(f'{mode}.{main_file_name}', fromlist=[main_file_name])
 
     return imported_modes_infos, imported_main_mode_files
 #when using the function use 
