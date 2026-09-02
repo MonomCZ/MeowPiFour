@@ -1,4 +1,4 @@
-import Functions.dynamic_mode_import
+#import Functions.dynamic_mode_import
 import Functions.ui
 import Main.config as config
 import Functions.oled_display as oled_display
@@ -17,7 +17,5 @@ oled.fill(0)
 oled.show()
 
 #import_modes_infos, imported_main_mode_files = Functions.dynamic_mode_import.import_modes()
+Functions.ui.boot_screen()
 
-oled_display.clear()
-oled_display.display_text("Hello Rurf", 20, font)
-oled_display.show(oled)

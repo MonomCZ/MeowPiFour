@@ -12,15 +12,14 @@ def import_modes():
     for mode in modelist:
         mode_info= mode + "_info"
         import_mode = f'Modes.{mode}.{mode_info}'
-        imported_modes_infos[mode_info] = __import__(import_mode, fromlist=[mode_info])
-
+        imported_modes_infos[mode_info] = __import__(import_mode, fromlist=[mode_info]) imported_modes_infos[mode_info] = __import__(import_mode, fromlist=[mode_info])
+    #print(f'!!!!!!!!!!!!!!!!!!!Imported main file name for evil_twin: {imported_modes_infos["evil_twin_info"].main_file_name}')
     for mode in modelist:
         main_file_name = imported_modes_infos[mode + "_info"].main_file_name
-        import_mode = f'Modes.{mode}.{main_file_name}'
-        imported_main_mode_files[mode] = __import__(import_mode, fromlist=[main_file_name])
-    
+        imported_main_mode_files[mode] = __import__(f'{mode}.{main_file_name}', fromlist=[main_file_name])
 
     return imported_modes_infos, imported_main_mode_files
 #when using the function use 
 #imported_modes_infos, imported_main_mode_files = import_modes()
+
 import_modes_infos, imported_main_mode_files = import_modes()

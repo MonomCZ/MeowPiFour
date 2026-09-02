@@ -6,8 +6,8 @@ import sys
 import subprocess
 import threading
 from flask import Flask, render_template
-from EvilTwin_info import options, selected_options
-preset = [selected_options]  
+from EvilTwin_info import WIFI_PRESETS, ACTIVE_PRESET, WLAN
+preset = WIFI_PRESETS[ACTIVE_PRESET]
 
 
 #For comands like stop procesess  -- "systemctl", "stop", "NetworkManager  
@@ -19,9 +19,9 @@ def cmd(comand, ignore_error = False): # ignore_error so the script dont fail if
     return result     
 
 #Configruration
-IFACE = preset["wlan"]  # The interface to use for the Evil Twin attack
+IFACE = WLAN
 PORTAL_IP = "192.168.4.1"
-WIFI_SSID = preset["ssid"]
+WIFI_SSID = selected_options["SSID"]
 
 #Step 1 stop all services
 def stoping_services():
