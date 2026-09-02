@@ -1,4 +1,5 @@
 #IMPORTS 
+#test PYTHONPATH=. python modes/evil_twin/evil_twin.py
 import textwrap
 import os 
 import time 
