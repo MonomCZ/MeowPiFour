@@ -12,7 +12,7 @@ def import_modes():
     for mode in modelist:
         mode_info= mode + "_info"
         import_mode = f'Modes.{mode}.{mode_info}'
-        imported_modes_infos[mode_info] = __import__(import_mode, fromlist=[mode_info])
+        imported_modes_infos[mode_info] = __import__(f'Modes.{mode}.{import_mode}', fromlist=[mode_info])
 
     for mode in modelist:
         main_file_name = imported_modes_infos[mode + "_info"].main_file_name
