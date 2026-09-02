@@ -16,8 +16,5 @@ oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c)
 oled.fill(0)
 oled.show()
 
-#import_modes_infos, imported_main_mode_files = Functions.dynamic_mode_import.import_modes()
+import_modes_infos, imported_main_mode_files = Functions.dynamic_mode_import.import_modes()
 
-oled_display.clear()
-oled_display.display_text("Hello Rurf", 20, font)
-oled_display.show(oled)
