@@ -24,7 +24,7 @@ IFACE = selected_options['WLAN']
 PORTAL_IP = "192.168.4.1"
 WIFI_SSID = selected_options["SSID"]
 
-'''
+
 #Step 1 stop all services
 def stoping_services():
     print("Stoping all services...")
@@ -34,7 +34,7 @@ def stoping_services():
     cmd(["systemctl", "stop", "hostapd"], ignore_error=True)
     cmd(["systemctl", "stop", "dnsmasq"], ignore_error=True)
     print("Step 1 DONE... all services where stoped")
-'''
+
 
 # Step 2 configuring interfaces
 def configuring_interfaces():
@@ -117,7 +117,7 @@ def start_portal():
 
 
 def main():
-    stoping_services()
+    #stoping_services()
     configuring_interfaces()
     starting_services()
     setup_iptables()
