@@ -117,7 +117,7 @@ def start_portal():
 
 
 def main():
-    stoping_services()
+    #stoping_services()
     configuring_interfaces()
     starting_services()
     setup_iptables()
