@@ -25,12 +25,12 @@ PORTAL_IP = "192.168.4.1"
 WIFI_SSID = selected_options["SSID"]
 
 
-#Step 1 stop all services
+#Step 1 stop all services     
 def stoping_services():
     print("Stoping all services...")
     #cmd(["systemctl", "stop", "wpa_supplicant"], ignore_error=True)
     #cmd(["systemctl", "disable", "wpa_supplicant"], ignore_error=True) # to turn off wpa_suplicatnt
-    cmd(["systemctl", "stop", "NetworkManager"], ignore_error=True)
+    #cmd(["systemctl", "stop", "NetworkManager"], ignore_error=True)
     cmd(["systemctl", "stop", "hostapd"], ignore_error=True)
     cmd(["systemctl", "stop", "dnsmasq"], ignore_error=True)
     print("Step 1 DONE... all services where stoped")
