@@ -122,7 +122,7 @@ def main():
     starting_services()
     setup_iptables()
     print("Starting Evil_Twin.py Portal")
-    start_portal()
+    start_portal()  
 
 if __name__ == "__main__":
     main()

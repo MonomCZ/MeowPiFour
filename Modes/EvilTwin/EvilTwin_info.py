@@ -9,7 +9,7 @@ options = {
 #If no value is selected, the default value will be used.
 selected_options = {
     "SSID": "FREE WIFI",
-    "WLAN": "TP_LINK_ADAPTER",
+    
     "PORTAL": "free_wifi.html"
      
 
