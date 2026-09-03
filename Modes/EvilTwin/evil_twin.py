@@ -28,8 +28,8 @@ WIFI_SSID = selected_options["SSID"]
 #Step 1 stop all services
 def stoping_services():
     print("Stoping all services...")
-    cmd(["systemctl", "stop", "wpa_supplicant"], ignore_error=True)
-    cmd(["systemctl", "disable", "wpa_supplicant"], ignore_error=True) # to turn off wpa_suplicatnt
+    #cmd(["systemctl", "stop", "wpa_supplicant"], ignore_error=True)
+    #cmd(["systemctl", "disable", "wpa_supplicant"], ignore_error=True) # to turn off wpa_suplicatnt
     cmd(["systemctl", "stop", "NetworkManager"], ignore_error=True)
     cmd(["systemctl", "stop", "hostapd"], ignore_error=True)
     cmd(["systemctl", "stop", "dnsmasq"], ignore_error=True)
@@ -117,7 +117,7 @@ def start_portal():
 
 
 def main():
-    #stoping_services()
+    stoping_services()
     configuring_interfaces()
     starting_services()
     setup_iptables()
