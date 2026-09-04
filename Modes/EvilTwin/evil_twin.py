@@ -2,7 +2,7 @@
 #test - sudo PYTHONPATH=. python Modes/EvilTwin/evil_twin.py
 import textwrap
 import os 
-import time 
+import time
 import sys
 import subprocess
 import threading
@@ -27,10 +27,8 @@ WIFI_SSID = selected_options["SSID"]
 
 #Step 1 stop all services     
 def stoping_services():
-    print("Stoping all services...")
-    cmd(["systemctl", "stop", "wpa_supplicant"], ignore_error=True)
-    cmd(["systemctl", "disable", "wpa_supplicant"], ignore_error=True) # to turn off wpa_suplicatnt
-    cmd(["systemctl", "stop", "NetworkManager"], ignore_error=True)
+    print("Stoping  NetworkManager for the interface, hostapd and dnsmasq services...")
+    cmd(["nmcli", "device", "set", IFACE, "managed", "no"], ignore_error=True) # Disable NetworkManager for the interface
     cmd(["systemctl", "stop", "hostapd"], ignore_error=True)
     cmd(["systemctl", "stop", "dnsmasq"], ignore_error=True)
     print("Step 1 DONE... all services where stoped")
@@ -110,7 +108,7 @@ app = Flask(__name__, template_folder=os.path.join(base_dir, "templates"))
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
-def captive_portal(path):
+def captive_portal():
     return render_template(preset["PORTAL"])
 
 def start_portal():
