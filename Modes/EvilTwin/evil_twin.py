@@ -1,5 +1,5 @@
 #IMPORTS 
-#test PYTHONPATH=. python modes/evil_twin/evil_twin.py
+#test - sudo PYTHONPATH=. python Modes/EvilTwin/evil_twin.py
 import textwrap
 import os 
 import time 
@@ -28,9 +28,9 @@ WIFI_SSID = selected_options["SSID"]
 #Step 1 stop all services     
 def stoping_services():
     print("Stoping all services...")
-    #cmd(["systemctl", "stop", "wpa_supplicant"], ignore_error=True)
-    #cmd(["systemctl", "disable", "wpa_supplicant"], ignore_error=True) # to turn off wpa_suplicatnt
-    #cmd(["systemctl", "stop", "NetworkManager"], ignore_error=True)
+    cmd(["systemctl", "stop", "wpa_supplicant"], ignore_error=True)
+    cmd(["systemctl", "disable", "wpa_supplicant"], ignore_error=True) # to turn off wpa_suplicatnt
+    cmd(["systemctl", "stop", "NetworkManager"], ignore_error=True)
     cmd(["systemctl", "stop", "hostapd"], ignore_error=True)
     cmd(["systemctl", "stop", "dnsmasq"], ignore_error=True)
     print("Step 1 DONE... all services where stoped")
@@ -58,6 +58,7 @@ config_hostapd = textwrap.dedent (f"""\
 """)
 
 def configurating_hostapd():
+     print("Step 3 DONE ... Configuring HOSTAPD was successful")
      os.makedirs("/etc/hostapd", exist_ok=True)
      with open("/etc/hostapd/hostapd.conf", "w") as f:
           f.write(config_hostapd)
@@ -73,6 +74,7 @@ config_dnsmasq = textwrap.dedent(f"""\
  """)
 
 def configurating_dnsmasq():
+     print("Step 3 DONE ... Configuring DNSMASQ was successful")
      with open("/etc/dnsmasq.conf", "w") as f:
           f.write(config_dnsmasq)
 
