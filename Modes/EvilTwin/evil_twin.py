@@ -38,7 +38,7 @@ def stoping_services():
 
 # Step 2 configuring interfaces
 def configuring_interfaces():
-     print("Configureting intarfeces")
+     print("Configureting intarfeces..")
      cmd (["ip", "link", "set", IFACE, "up"], ignore_error=True) # Turn on InterFace
      cmd (["ip", "addr", "flush", "dev", IFACE], ignore_error=True) # Flush InterFace
      cmd(["ip", "addr", "add", f"{PORTAL_IP}/24", "dev", IFACE], ignore_error=True) # to add IP to InterFace
@@ -74,7 +74,7 @@ config_dnsmasq = textwrap.dedent(f"""\
  """)
 
 def configurating_dnsmasq():
-     print("Step 3 DONE ... Configuring DNSMASQ was successful")
+     print("Step 4 DONE ... Configuring DNSMASQ was successful")
      with open("/etc/dnsmasq.conf", "w") as f:
           f.write(config_dnsmasq)
 
@@ -89,7 +89,7 @@ def starting_services():
      time.sleep(2)
      cmd(["systemctl", "start", "dnsmasq"])
 
-     print("All services are running DNSMASQ ... ON HOSTAPD... ON")
+     print("Step 5 DONE services are running DNSMASQ ON HOSTAPD ON")
 #100% works 
 
 def setup_iptables():
@@ -119,7 +119,7 @@ def start_portal():
 
 
 def main():
-    #stoping_services()
+    stoping_services()
     configuring_interfaces()
     starting_services()
     setup_iptables()
