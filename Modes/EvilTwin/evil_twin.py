@@ -59,11 +59,12 @@ def start_portal():
      print("Starting web server on port 80...")
      app.run(host="0.0.0.0", port=80, debug=False, use_reloader=False)
      #app.run(host=PORTAL_IP, port=80, debug=False, use_reloader=False)
+     print("PORTAL =", PORTAL)
+     print("TEMPLATE FOLDER =", os.path.join(base_dir, "templates"))
 
 
 def main():
     starting_services()
-    #setup_iptables()
     start_portal() 
     print("Starting Evil_Twin.py Portal") 
 
