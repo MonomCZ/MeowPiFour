@@ -26,8 +26,9 @@ PORTAL = selected_options["PORTAL"]
 
 def starting_services():
      #Starting the servecises
+     cmd(["nmcli", "connection", "delete", "Hotspot"], ignore_error=True)
      cmd(["nmcli", "connection", "add", "type", "wifi", "ifname", IFACE, "con-name", "Hotspot", "ssid", WIFI_SSID]); 
-     cmd(["nmcli", "connection", "modify", "Hotspot", "802-11-wireless.mode", "ap", "ipv4.method", "shared", "ipv4.addresses", "192.168.4.1/24"]); 
+     cmd(["nmcli", "connection", "modify", "Hotspot", "802-11-wireless.mode", "ap", "ipv4.method", "shared", "ipv4.addresses", "192.168.4.1/24", "connection.autoconnect", "no"]); 
      cmd(["nmcli", "connection", "up", "Hotspot"])
 
      print("Step 1 DONE services are running ")
@@ -52,16 +53,18 @@ app = Flask(__name__, template_folder=os.path.join(base_dir, "templates"))
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def captive_portal():
-    return render_template(PORTAL)
+    return "FLASK FUNGUJE"
+    #return render_template(PORTAL)
 
 def start_portal():
      print("Starting web server on port 80...")
      app.run(host="0.0.0.0", port=80, debug=False, use_reloader=False)
+     #app.run(host=PORTAL_IP, port=80, debug=False, use_reloader=False)
 
 
 def main():
     starting_services()
-    setup_iptables()
+    #setup_iptables()
     start_portal() 
     print("Starting Evil_Twin.py Portal") 
 
