@@ -169,7 +169,7 @@ def list_modes(font):
         y += 2
         oled_display.show(oled)
         time.sleep(1)
-        oled_display.clear()
+        
 
 
 
