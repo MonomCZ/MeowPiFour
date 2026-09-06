@@ -6,6 +6,7 @@ from PIL import Image
 import board
 import busio
 import random
+import os
 
 WIDTH = 128
 HEIGHT = 64
