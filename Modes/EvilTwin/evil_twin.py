@@ -23,72 +23,17 @@ def cmd(comand, ignore_error = False): # ignore_error so the script dont fail if
 IFACE = selected_options['WLAN']
 PORTAL_IP = "192.168.4.1"
 WIFI_SSID = selected_options["SSID"]
+PORTAL = selected_options["PORTAL"]
 
-
-#Step 1 stop all services     
-def stoping_services():
-    print("Stoping  NetworkManager for the interface, hostapd and dnsmasq services...")
-    cmd(["nmcli", "device", "set", IFACE, "managed", "no"], ignore_error=True) # Disable NetworkManager for the interface
-    cmd(["systemctl", "stop", "hostapd"], ignore_error=True)
-    cmd(["systemctl", "stop", "dnsmasq"], ignore_error=True)
-    print("Step 1 DONE... all services where stoped")
-
-
-# Step 2 configuring interfaces
-def configuring_interfaces():
-     print("Configureting intarfeces..")
-     cmd (["ip", "link", "set", IFACE, "up"], ignore_error=True) # Turn on InterFace
-     cmd (["ip", "addr", "flush", "dev", IFACE], ignore_error=True) # Flush InterFace
-     cmd(["ip", "addr", "add", f"{PORTAL_IP}/24", "dev", IFACE], ignore_error=True) # to add IP to InterFace
-     print("Step 2 DONE ... Configureting intarfeces was successful")
-
-
-#Step 3 Rewriting config files (Configuring HOSTAPD and DNSMASQ)
-config_hostapd = textwrap.dedent (f"""\
-     interface={IFACE}
-     driver=nl80211
-     ssid={WIFI_SSID}
-     hw_mode=g
-     channel=6
-     wmm_enabled=0
-     auth_algs=1
-     ignore_broadcast_ssid=0
-""")
-
-def configurating_hostapd():
-     print("Step 3 DONE ... Configuring HOSTAPD was successful")
-     os.makedirs("/etc/hostapd", exist_ok=True)
-     with open("/etc/hostapd/hostapd.conf", "w") as f:
-          f.write(config_hostapd)
-
-config_dnsmasq = textwrap.dedent(f"""\
-     interface={IFACE}
-     bind-interfaces
-     dhcp-range=192.168.4.10,192.168.4.100,255.255.255.0,12h
-     dhcp-option=3,192.168.4.1
-     dhcp-option=6,192.168.4.1
-     address=/#/192.168.4.1
-     no-resolv
- """)
-
-def configurating_dnsmasq():
-     print("Step 4 DONE ... Configuring DNSMASQ was successful")
-     with open("/etc/dnsmasq.conf", "w") as f:
-          f.write(config_dnsmasq)
 
 def starting_services():
-     #Useing definicions to configure.
-     configurating_hostapd()
-     configurating_dnsmasq()
-     time.sleep(1)
      #Starting the servecises
-     cmd(["systemctl", "unmask", "hostapd"], ignore_error=True) 
-     cmd(["systemctl", "start", "hostapd"])
-     time.sleep(2)
-     cmd(["systemctl", "start", "dnsmasq"])
+     cmd(["nmcli", "connection", "add", "type", "wifi", "ifname", IFACE, "con-name", "Hotspot", "ssid", WIFI_SSID]); 
+     cmd(["nmcli", "connection", "modify", "Hotspot", "802-11-wireless.mode", "ap", "ipv4.method", "shared", "ipv4.addresses", "192.168.4.1/24"]); 
+     cmd(["nmcli", "connection", "up", "Hotspot"])
 
-     print("Step 5 DONE services are running DNSMASQ ON HOSTAPD ON")
-#100% works 
+     print("Step 1 DONE services are running ")
+
 
 def setup_iptables():
     print("Setting up iptables rules...")
@@ -117,12 +62,10 @@ def start_portal():
 
 
 def main():
-    stoping_services()
-    configuring_interfaces()
     starting_services()
     setup_iptables()
-    print("Starting Evil_Twin.py Portal")
-    start_portal()  
+    start_portal() 
+    print("Starting Evil_Twin.py Portal") 
 
 if __name__ == "__main__":
     main()
