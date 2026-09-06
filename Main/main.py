@@ -18,4 +18,4 @@ oled.show()
 
 #import_modes_infos, imported_main_mode_files = Functions.dynamic_mode_import.import_modes()
 Functions.ui.boot_screen()
-
+Functions.ui.list_modes(font)

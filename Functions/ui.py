@@ -159,10 +159,18 @@ def boot_screen():
 
     oled.image(image)
 
-def test_text():
+def list_modes(font):
+    modelist = [ item for item in os.listdir('Modes') if os.path.isdir(os.path.join('Modes', item)) ]
     oled_display.clear()
-    oled_display.display_text("Hello, World!", 0, 'Hack')
-    oled_display.show()
+    y = 0
+    for mode in modelist:
+        oled_display.text(mode, y, font)
+        y += font.getsize(mode)[1] + 2
+        oled_display.show()
+        time.sleep(1)
+        oled_display.clear()
+
+
 
 
 
