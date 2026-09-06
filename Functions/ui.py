@@ -167,7 +167,7 @@ def list_modes(font):
     for mode in modelist:
         oled_display.display_text(mode, y, font)
         y += 20
-        oled_display.show()
+        oled_display.show(oled)
         time.sleep(1)
         oled_display.clear()
 
