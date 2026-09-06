@@ -1,5 +1,5 @@
 from PIL import ImageFont
-font = ImageFont.truetype('/usr/share/fonts/truetype/msttcorefonts/Comic_Sans_MS_Bold.ttf', 20)
+font = ImageFont.truetype('/usr/share/fonts/truetype/msttcorefonts/Comic_Sans_MS_Bold.ttf', 12)
 #list of fonts on the rpi atm
 #/usr/share/fonts/truetype/liberation/LiberationMono-BoldItalic.ttf
 # /usr/share/fonts/truetype/liberation/LiberationSansNarrow-Italic.ttf
