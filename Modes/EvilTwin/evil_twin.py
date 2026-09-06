@@ -1,11 +1,9 @@
 #IMPORTS 
 #test - sudo PYTHONPATH=. python Modes/EvilTwin/evil_twin.py
-import textwrap
 import os 
 import time
 import sys
 import subprocess
-import threading
 from flask import Flask, render_template
 from EvilTwin_info import selected_options
 preset = selected_options
@@ -58,7 +56,7 @@ def captive_portal():
 
 def start_portal():
      print("Starting web server on port 80...")
-     threading.Thread(target=lambda: app.run(host="0.0.0.0", port=80, threaded=True), daemon=True).start()
+     app.run(host="0.0.0.0", port=80, debug=False, use_reloader=False)
 
 
 def main():
