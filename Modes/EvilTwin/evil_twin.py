@@ -54,7 +54,7 @@ app = Flask(__name__, template_folder=os.path.join(base_dir, "templates"))
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def captive_portal():
-    return render_template(preset["PORTAL"])
+    return render_template(PORTAL)
 
 def start_portal():
      print("Starting web server on port 80...")
