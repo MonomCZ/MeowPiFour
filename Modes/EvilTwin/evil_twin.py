@@ -61,11 +61,21 @@ def start_portal():
      app.run(host="0.0.0.0", port=80, debug=False, use_reloader=False)
      #app.run(host=PORTAL_IP, port=80, debug=False, use_reloader=False)
 
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def test():
+    return "FLASK FUNGUJE"
+
+app.run(host="0.0.0.0", port=80, debug=False, use_reloader=False)
 
 def main():
     starting_services()
     #setup_iptables()
-    start_portal() 
+    #start_portal() 
+    test() #REMOVE
     print("Starting Evil_Twin.py Portal") 
 
 if __name__ == "__main__":
