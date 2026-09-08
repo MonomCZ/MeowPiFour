@@ -34,18 +34,6 @@ def starting_services():
      print("Step 1 DONE services are running ")
 
 
-def setup_iptables():
-    print("Setting up iptables rules...")
-    # This will clean the iptable
-    cmd(["iptables", "-t", "nat", "-F"], ignore_error=True)
-
-    #HTTP to port 80
-    cmd(["iptables", "-t", "nat", "-A", "PREROUTING", "-i", IFACE,
-         "-p", "tcp", "--dport", "80", "-j", "REDIRECT", "--to-port", "80"])
-     
-     #HTTPS to port 80
-    cmd(["iptables", "-t", "nat", "-A", "PREROUTING", "-i", IFACE,
-         "-p", "tcp", "--dport", "443", "-j", "REDIRECT", "--to-port", "80"])
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__, template_folder=os.path.join(base_dir, "templates"))
