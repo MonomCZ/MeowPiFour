@@ -3,6 +3,7 @@
 import os 
 import time
 import sys
+import textwrap
 import subprocess
 from flask import Flask, render_template
 from EvilTwin_info import selected_options
@@ -23,6 +24,16 @@ PORTAL_IP = "192.168.4.1"
 WIFI_SSID = selected_options["SSID"]
 PORTAL = selected_options["PORTAL"]
 
+config_dnsmasq = textwrap.dedent(f"""\
+interface={IFACE}
+bind-interfaces
+address=/#/192.168.4.1
+no-resolv
+""")
+
+def configure_dnsmasq():
+    with open("/etc/dnsmasq.conf", "w") as f:
+        f.write(config_dnsmasq)
 
 def starting_services():
      #Starting the servecises
@@ -66,6 +77,7 @@ def start_portal():
 
 
 def main():
+    configure_dnsmasq()
     starting_services()
     start_portal() 
     print("Starting Evil_Twin.py Portal") 
