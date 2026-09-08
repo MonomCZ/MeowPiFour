@@ -40,7 +40,7 @@ app = Flask(__name__, template_folder=os.path.join(base_dir, "templates"))
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
-def captive_portal():
+def captive_portal(path=""):
     return render_template(PORTAL)
 
 def start_portal():
