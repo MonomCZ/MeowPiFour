@@ -37,11 +37,25 @@ def starting_services():
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__, template_folder=os.path.join(base_dir, "templates"))
+def show_portal():
+    return render_template(PORTAL)
 
+# Normal HTTP detection requests
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def captive_portal(path=""):
-    return render_template(PORTAL)
+    return show_portal()
+
+# Windows captive portal detection requests
+@app.route("/connecttest.txt")
+@app.route("/ncsi.txt")
+def windows_captive_test():
+    return show_portal()
+
+#Apple captive portal detection requests
+@app.route("/hotspot-detect.html")
+def apple_captive_test():
+    return show_portal()
 
 def start_portal():
      print("Starting web server on port 80...")
