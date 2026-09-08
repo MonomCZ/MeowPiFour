@@ -27,10 +27,10 @@ PORTAL = selected_options["PORTAL"]
 def starting_services():
      #Starting the servecises
      cmd(["nmcli", "connection", "delete", "Hotspot"], ignore_error=True)
+     cmd(["nmcli", "connection", "up", "$(nmcli -g GENERAL.CONNECTION device show wlan0)", "ifname", "wlan1"], ignore_error=True)#Wlan1 feature: connects to your wifi that wlan0 does when it aouto connects
      cmd(["nmcli", "connection", "add", "type", "wifi", "ifname", IFACE, "con-name", "Hotspot", "ssid", WIFI_SSID]); 
      cmd(["nmcli", "connection", "modify", "Hotspot", "802-11-wireless.mode", "ap", "ipv4.method", "shared", "ipv4.addresses", "192.168.4.1/24", "connection.autoconnect", "no"]); 
      cmd(["nmcli", "connection", "up", "Hotspot"])
-
      print("Step 1 DONE services are running ")
 
 
@@ -57,7 +57,7 @@ def captive_portal():
 
 def start_portal():
      print("Starting web server on port 80...")
-     app.run(host="0.0.0.0", port=80, debug=False, use_reloader=False)
+     app.run(host="0.0.0.0", port=80, debug=True, use_reloader=False)
      #app.run(host=PORTAL_IP, port=80, debug=False, use_reloader=False)
      print("PORTAL =", PORTAL)
      print("TEMPLATE FOLDER =", os.path.join(base_dir, "templates"))
