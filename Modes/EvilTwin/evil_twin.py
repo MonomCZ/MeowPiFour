@@ -35,7 +35,7 @@ def configure_dnsmasq():
     path = "/etc/NetworkManager/dnsmasq-shared.d/captive.conf"
 
     with open(path, "w") as f:
-        f.write(config_dnsmasq)
+         f.write("address=/#/192.168.4.1\n")
 
 def starting_services():
      #Starting the servecises
