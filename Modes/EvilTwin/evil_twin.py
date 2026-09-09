@@ -32,7 +32,9 @@ no-resolv
 """)
 
 def configure_dnsmasq():
-    with open("/etc/dnsmasq.conf", "w") as f:
+    path = "/etc/NetworkManager/dnsmasq-shared.d/captive.conf"
+
+    with open(path, "w") as f:
         f.write(config_dnsmasq)
 
 def starting_services():
@@ -43,7 +45,6 @@ def starting_services():
      cmd(["nmcli", "connection", "modify", "Hotspot", "802-11-wireless.mode", "ap", "ipv4.method", "shared", "ipv4.addresses", "192.168.4.1/24", "connection.autoconnect", "no"]); 
      cmd(["nmcli", "connection", "up", "Hotspot"])
      print("Step 1 DONE services are running ")
-
 
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
