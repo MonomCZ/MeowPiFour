@@ -47,10 +47,23 @@ def configure_iptables():
         "-j", "REDIRECT",
         "--to-ports", "80"
     ]
-    result = subprocess.run(check, capture_output=True, text=True)
+
+    result = subprocess.run(
+        check,
+        capture_output=True,
+        text=True
+    )
 
     if result.returncode != 0:
-        cmd(rule)
+        result = subprocess.run(
+            rule,
+            capture_output=True,
+            text=True
+        )
+
+        if result.returncode != 0:
+            print(f"iptables ERROR: {result.stderr.strip()}")
+            sys.exit(1)
     
 def configure_dnsmasq():
     path = "/etc/NetworkManager/dnsmasq-shared.d/captive.conf"
@@ -114,8 +127,8 @@ def start_portal():
 
 def main():
     connect_open_wifi()
-    configure_iptables()
     starting_services()
+    configure_iptables()
     start_portal() 
     print("Starting Evil_Twin.py Portal") 
 
