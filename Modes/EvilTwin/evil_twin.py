@@ -25,6 +25,33 @@ IFACE_AP = selected_options['WLAN']
 WIFI_SSID = selected_options["SSID"]
 PORTAL = selected_options["PORTAL"]
 
+def configure_iptables():
+    rule = [
+        "iptables",
+        "-t", "nat",
+        "-A", "PREROUTING",
+        "-i", IFACE_AP,
+        "-p", "tcp",
+        "--dport", "80",
+        "-j", "REDIRECT",
+        "--to-ports", "80"
+    ]
+
+    check = [
+        "iptables",
+        "-t", "nat",
+        "-C", "PREROUTING",
+        "-i", IFACE_AP,
+        "-p", "tcp",
+        "--dport", "80",
+        "-j", "REDIRECT",
+        "--to-ports", "80"
+    ]
+    result = subprocess.run(check, capture_output=True, text=True)
+
+    if result.returncode != 0:
+        cmd(rule)
+    
 def configure_dnsmasq():
     path = "/etc/NetworkManager/dnsmasq-shared.d/captive.conf"
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -87,7 +114,7 @@ def start_portal():
 
 def main():
     connect_open_wifi()
-    configure_dnsmasq()
+    configure_iptables()
     starting_services()
     start_portal() 
     print("Starting Evil_Twin.py Portal") 
