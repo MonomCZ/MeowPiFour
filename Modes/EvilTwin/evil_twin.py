@@ -65,11 +65,6 @@ def configure_iptables():
             print(f"iptables ERROR: {result.stderr.strip()}")
             sys.exit(1)
     
-def configure_dnsmasq():
-    path = "/etc/NetworkManager/dnsmasq-shared.d/captive.conf"
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w") as f:
-         f.write("address=/#/192.168.4.1\n")
 
 #This funkcion connects to the open wifi network that is available in the area. This is useful if you want to use the internet while running the Evil Twin attack.
 def connect_open_wifi():
