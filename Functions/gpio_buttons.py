@@ -3,6 +3,7 @@ import RPi.GPIO as GPIO
 import time
 
 btn1 = 22
+btn2 = 5
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(btn1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
@@ -12,3 +13,19 @@ def button1():
             return True
         else:
             return False
+
+            GPIO.setmode(GPIO.BCM)
+GPIO.setup(btn2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+def button2():
+    while True:
+        if GPIO.input(btn2) == 1:
+            return True
+        else:
+            return False
+
+while True:
+    if button1():
+        print("Button 1 pressed")
+    if button2():
+        print("Button 2 pressed")
