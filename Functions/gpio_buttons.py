@@ -4,7 +4,7 @@ import time
 
 btn1 = 22
 btn2 = 5
-btn3 = 6
+btn3 = 27
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(btn1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(btn2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
