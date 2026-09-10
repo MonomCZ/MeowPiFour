@@ -53,11 +53,16 @@ def button3():
 while True:
     if button1():
         print("Button 1 pressed")
+        time.sleep(0.5)
     if button2():
         print("Button 2 pressed")
+        time.sleep(0.5)
     if button3():
         print("Button 3 pressed")
+        time.sleep(0.5) 
     if button4():
         print("Button 4 pressed")
+        time.sleep(0.5)
     if button5():
         print("Button 5 pressed")
+        time.sleep(0.5)
