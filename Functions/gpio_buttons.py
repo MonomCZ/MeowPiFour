@@ -6,7 +6,7 @@ btn1 = 22
 btn2 = 5
 btn3 = 26
 btn4 = 27
-btn5 = 27
+btn5 = 1
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(btn1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(btn2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
