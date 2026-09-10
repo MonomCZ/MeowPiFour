@@ -4,7 +4,7 @@ import time
 
 btn1 = 22
 btn2 = 5
-btn3 = 1
+btn3 = 24
 btn4 = 27
 btn5 = 26
 GPIO.setmode(GPIO.BCM)
