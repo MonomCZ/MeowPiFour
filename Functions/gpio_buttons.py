@@ -4,12 +4,13 @@ import time
 
 btn1 = 22
 btn2 = 5
-btn3 = 27
+btn3 = 26
+btn4 = 27
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(btn1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(btn2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(btn3, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-
+GPIO.setup(btn4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 def button1():
     while True:
         if GPIO.input(btn1) == 1:
@@ -27,7 +28,7 @@ def button2():
         else:
             return False
 
-def button3():
+def button4():
     while True:
         if GPIO.input(btn3) == 1:
             return True
@@ -39,5 +40,7 @@ while True:
         print("Button 1 pressed")
     if button2():
         print("Button 2 pressed")
-    if button3():
-        print("Button 3 pressed")
+    
+
+    if button4():
+        print("Button 4 pressed")
