@@ -10,7 +10,7 @@ Current inlcluded projects are:
 Hardware needed for this project:
 - **I2C OLED display**
 - **GPIO buttons**
-- **TP-Link Wi-Fi adapter**
+- **Wi-Fi adapter**
 
 
 ---
