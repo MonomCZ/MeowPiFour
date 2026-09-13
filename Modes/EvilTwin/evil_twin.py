@@ -73,6 +73,7 @@ def connect_open_wifi():
         conn_name = subprocess.check_output(["nmcli", "-g", "GENERAL.CONNECTION", "device", "show", IFACE_AP], text=True ).strip()
         if conn_name and conn_name != "--":
             cmd(["nmcli", "connection", "up", conn_name, "ifname", IFACE_INTERNET], ignore_error=True,)
+            cmd(["nmcli", "modify", conn_name, "connection.autoconnect", "no"])
     except subprocess.CalledProcessError:
         pass
     
@@ -85,6 +86,7 @@ def connect_open_wifi():
     strongest_open_wifi = site[0] if site else None
     if strongest_open_wifi:
         cmd(["nmcli", "device", "wifi", "connect", strongest_open_wifi, "ifname", IFACE_INTERNET], ignore_error=True)
+        cmd(["nmcli", "modify", strongest_open_wifi, "connection.autoconnect", "no"])
 
 
 def starting_services():
