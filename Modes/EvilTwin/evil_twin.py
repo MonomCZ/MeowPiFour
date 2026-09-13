@@ -69,8 +69,14 @@ def configure_iptables():
 #This funkcion connects to the open wifi network that is available in the area. This is useful if you want to use the internet while running the Evil Twin attack.
 def connect_open_wifi():
     #HOME WIFI - Wlan1 feature: connects to your home wifi that was previously connected to, so you can still use the internet while running the Evil Twin attack.
-    #cmd(["nmcli", "connection", "up", "$(nmcli -g GENERAL.CONNECTION device show wlan0)", "ifname", IFACE_INTERNET], ignore_error=True,)
-    subprocess.run(f"nmcli connection up \"$(nmcli -g GENERAL.CONNECTION device show {IFACE_INTERNET})\" ifname {IFACE_INTERNET}", shell=True,)
+    try:
+        conn_name = subprocess.check_output(["nmcli", "-g", "GENERAL.CONNECTION", "device", "show", IFACE_AP], text=True ).strip()
+        if conn_name and conn_name != "--":
+            cmd(["nmcli", "connection", "up", conn_name, "ifname", IFACE_INTERNET], ignore_error=True,)
+    except subprocess.CalledProcessError:
+        pass
+    
+    
     
     #If home wifi is not connected, it will try to connect to the strongest open wifi network available.
     cmd(["nmcli", "device", "wifi", "rescan", "ifname", IFACE_INTERNET], ignore_error=True)
