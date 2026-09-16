@@ -72,8 +72,8 @@ def connect_open_wifi():
     try:
         conn_name = subprocess.check_output(["nmcli", "-g", "GENERAL.CONNECTION", "device", "show", IFACE_AP], text=True ).strip()
         if conn_name and conn_name != "--":
-            cmd(["nmcli", "connection", "up", conn_name, "ifname", IFACE_INTERNET], ignore_error=True,)
-            cmd(["nmcli", "modify", conn_name, "connection.autoconnect", "no"])
+            cmd(["nmcli", "connection", "up", conn_name, "ifname", IFACE_INTERNET], ignore_error=True)
+            cmd(["nmcli", "modify", conn_name, "connection.autoconnect", "no"], ignore_error=True)
     except subprocess.CalledProcessError:
         pass
     
