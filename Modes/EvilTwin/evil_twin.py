@@ -93,7 +93,7 @@ def starting_services():
      #This deletes the Hotspot connection if it already exists, so we can prevent any collisions with the new Hotspot connection we are about to create.
      cmd(["nmcli", "connection", "delete", "Hotspot"], ignore_error=True)
      cmd(["nmcli", "connection", "add", "type", "wifi", "ifname", IFACE_AP, "con-name", "Hotspot", "ssid", WIFI_SSID]); 
-     cmd(["nmcli", "connection", "modify", "Hotspot", "802-11-wireless.mode", "ap", "ipv4.method", "shared", "ipv4.addresses", "192.168.4.1/24", "connection.autoconnect", "no"]); 
+     cmd(["nmcli", "connection", "modify", "Hotspot", "802-11-wireless.mode", "ap", "ipv4.method", "shared", "ipv4.addresses", "192.168.4.1/24",]); 
      cmd(["nmcli", "connection", "up", "Hotspot"])
      print("Step 1 DONE services are running ")
 
