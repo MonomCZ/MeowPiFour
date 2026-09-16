@@ -129,7 +129,7 @@ def start_portal():
 
 
 def main():
-    connect_open_wifi()
+    #connect_open_wifi()
     starting_services()
     configure_iptables()
     start_portal() 
