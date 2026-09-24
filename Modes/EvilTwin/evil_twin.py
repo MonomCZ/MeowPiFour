@@ -116,7 +116,7 @@ def windows_captive_test():
     return show_portal()
 
 #Apple captive portal detection requests
-@app.route("/captive.apple.com/hotspot-detect.html") #/hotspot-detect.html
+@app.route("/hotspot-detect.html") 
 def apple_captive_test():
     return show_portal()
 
