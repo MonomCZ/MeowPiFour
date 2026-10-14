@@ -7,7 +7,7 @@ import textwrap
 import subprocess
 from flask import Flask, render_template
 from EvilTwin_info import selected_options
-preset = selected_options
+
 
 
 #For comands like stop procesess  -- "systemctl", "stop", "NetworkManager  
@@ -66,8 +66,8 @@ def configure_iptables():
             sys.exit(1)
     
 
-#This funkcion connects to the open wifi network that is available in the area. This is useful if you want to use the internet while running the Evil Twin attack.
-def connect_open_wifi():
+#This function connects to the open wifi network that is available in the area. This is useful if you want to use the internet while running the Evil Twin attack.
+def connect_to_wifi():
     #HOME WIFI - Wlan1 feature: connects to your home wifi that was previously connected to, so you can still use the internet while running the Evil Twin attack.
     try:
         conn_name = subprocess.check_output(["nmcli", "-g", "GENERAL.CONNECTION", "device", "show", IFACE_AP], text=True ).strip()
@@ -77,17 +77,6 @@ def connect_open_wifi():
     except subprocess.CalledProcessError:
         pass
     
-    
-    
-    #If home wifi is not connected, it will try to connect to the strongest open wifi network available.
-    cmd(["nmcli", "device", "wifi", "rescan", "ifname", IFACE_INTERNET], ignore_error=True)
-    vystup = cmd(["nmcli", "--terse", "--fields", "SSID", "device", "wifi", "list", "ifname", IFACE_INTERNET, "--filter", "SECURITY.SECURITY==--"], ignore_error=True)
-    site = [line.strip() for line in vystup.stdout.split("\n") if line.strip() and line.strip() != "--"]
-    strongest_open_wifi = site[0] if site else None
-    if strongest_open_wifi:
-        cmd(["nmcli", "device", "wifi", "connect", strongest_open_wifi, "ifname", IFACE_INTERNET], ignore_error=True)
-        #cmd(["nmcli", "modify", strongest_open_wifi, "connection.autoconnect", "no"])
-
 
 def starting_services():
      #This deletes the Hotspot connection if it already exists, so we can prevent any collisions with the new Hotspot connection we are about to create.
@@ -103,10 +92,8 @@ app = Flask(__name__, template_folder=os.path.join(base_dir, "templates"))
 def show_portal():
     return render_template(PORTAL)
 
-# Normal HTTP detection requests
-@app.route("/", defaults={"path": ""})
-@app.route("/<path:path>")
-def captive_portal(path=""):
+@app.route("/")
+def index():
     return show_portal()
 
 # Windows captive portal detection requests
@@ -129,7 +116,7 @@ def start_portal():
 
 
 def main():
-    connect_open_wifi()
+    connect_to_wifi()
     starting_services()
     configure_iptables()
     start_portal() 
