@@ -117,7 +117,7 @@ def start_portal():
      print("PORTAL =", PORTAL)
      print("TEMPLATE FOLDER =", os.path.join(base_dir, "templates"))
 
-y
+
 def main():
     connect_to_wifi()
     starting_services()
