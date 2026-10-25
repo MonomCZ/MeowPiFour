@@ -92,10 +92,6 @@ app = Flask(__name__, template_folder=os.path.join(base_dir, "templates"))
 def show_portal():
     return render_template(PORTAL)
 
-@app.route("/")
-def index():
-    return show_portal()
-
 # Windows captive portal detection requests
 @app.route("/connecttest.txt")
 @app.route("/ncsi.txt")
