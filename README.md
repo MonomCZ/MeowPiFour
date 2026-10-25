@@ -17,7 +17,7 @@ Hardware needed for this project:
 
 ## Install 
 
-Install on a clean install of rpi os 32bit lite with:
+Install on a clean install of rpi os 32/64bit lite with:
 ```bash
 sudo apt install -y git
 cd ~
